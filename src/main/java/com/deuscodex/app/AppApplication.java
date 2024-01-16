@@ -1,12 +1,13 @@
-package com.sample.board;
+package com.deuscodex.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BoardApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(BoardApplication.class, args);
-	}
-}
+public class AppApplication {
 
+	public static void main(String[] args) {
+		SpringApplication.run(AppApplication.class, args);
+	}
+
+}
