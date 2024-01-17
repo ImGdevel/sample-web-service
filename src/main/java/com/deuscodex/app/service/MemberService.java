@@ -1,5 +1,6 @@
 package com.deuscodex.app.service;
 
+import com.deuscodex.app.dto.MemberDTO;
 import com.deuscodex.app.entity.Member;
 import org.springframework.stereotype.Service;
 
@@ -8,13 +9,13 @@ import java.util.List;
 @Service
 public interface  MemberService {
 
-    List<Member> getAllMembers();
+    List<MemberDTO> getAllMembers();
 
-    Member getMemberById(Long memberId);
+    MemberDTO getMemberById(Long memberId);
 
-    Member createMember(Member member);
+    MemberDTO createMember(MemberDTO member);
 
-    Member updateMember(Long memberId, Member updatedMember);
+    MemberDTO updateMember(Long memberId, MemberDTO updatedMember);
 
-    void deleteMember(Long memberId);
+    boolean deleteMember(Long memberId);
 }
