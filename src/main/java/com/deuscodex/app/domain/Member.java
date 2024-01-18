@@ -1,7 +1,9 @@
-package com.deuscodex.app.entity;
+package com.deuscodex.app.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -17,27 +19,22 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Builder
 @Table(name = "Member")
 public class Member {
 
     @Id
-    Long memberId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long userId;  // PK, 서비스를 이용할 유저의 ID
 
     @NotNull
-    String name;
-
-    @NotNull
-    String username;
-
-    @NotNull
-    String password;
-
     @Column(unique = true)
+    String username;  // 유저명
+
     @NotNull
-    String email;
+    String password;  // 패스워드
 
-    String phoneNumber;
-
+    @NotNull
+    @Column(unique = true)
+    String email;  // 이메일
 }

@@ -1,7 +1,6 @@
 package com.deuscodex.app.service;
 
 import com.deuscodex.app.dto.MemberDTO;
-import com.deuscodex.app.entity.Member;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

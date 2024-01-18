@@ -1,10 +1,12 @@
 package com.deuscodex.app.service.impl;
 
 import com.deuscodex.app.dto.MemberDTO;
-import com.deuscodex.app.entity.Member;
+import com.deuscodex.app.domain.Member;
 import com.deuscodex.app.mapper.MemberMapper;
 import com.deuscodex.app.repository.MemberRepository;
 import com.deuscodex.app.service.MemberService;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,46 +16,48 @@ import java.util.stream.Collectors;
 @Service
 public class MemberServiceImpl implements MemberService {
 
-  @Autowired
+    @Autowired
     private MemberRepository memberRepository;
 
+    @Override
     public MemberDTO getMemberById(Long memberId) {
-        Member member = memberRepository.findById(memberId).orElse(null);
-        return MemberMapper.toDTO(member); // 엔터티를 DTO로 변환
+        Member member = memberRepository.findById(memberId)
+                .orElseThrow(() -> new EntityNotFoundException("Member not found with id: " + memberId));
+        return MemberMapper.toDTO(member);
     }
 
+    @Override
     public List<MemberDTO> getAllMembers() {
         List<Member> members = memberRepository.findAll();
         return members.stream()
-                .map(MemberMapper::toDTO) // 각 엔터티를 DTO로 변환
+                .map(MemberMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
+    @Override
+    @Transactional
     public MemberDTO createMember(MemberDTO memberDTO) {
-        Member member = MemberMapper.toEntity(memberDTO); // DTO를 엔터티로 변환
-        // 비즈니스 로직 수행 후 저장
+        Member member = MemberMapper.toEntity(memberDTO);
         Member savedMember = memberRepository.save(member);
-        return MemberMapper.toDTO(savedMember); // 엔터티를 DTO로 변환하여 반환
+        return MemberMapper.toDTO(savedMember);
     }
 
+    @Override
+    @Transactional
     public MemberDTO updateMember(Long memberId, MemberDTO memberDTO) {
-        Member existingMember = memberRepository.findById(memberId).orElse(null);
+        Member existingMember = memberRepository.findById(memberId)
+                .orElseThrow(() -> new EntityNotFoundException("Member not found with id: " + memberId));
 
-        if (existingMember != null) {
-            existingMember.setName(memberDTO.getName());
-            existingMember.setUsername(memberDTO.getUsername());
-            existingMember.setPassword(memberDTO.getPassword());
-            existingMember.setEmail(memberDTO.getEmail());
-            existingMember.setPhoneNumber(memberDTO.getPhoneNumber());
+        existingMember.setUsername(memberDTO.getUsername());
+        existingMember.setPassword(memberDTO.getPassword());
+        existingMember.setEmail(memberDTO.getEmail());
 
-            // 비즈니스 로직 수행 후 저장
-            Member updatedMember = memberRepository.save(existingMember);
-            return MemberMapper.toDTO(updatedMember); // 엔터티를 DTO로 변환하여 반환
-        } else {
-            return null;
-        }
+        Member updatedMember = memberRepository.save(existingMember);
+        return MemberMapper.toDTO(updatedMember);
     }
 
+    @Override
+    @Transactional
     public boolean deleteMember(Long memberId) {
         if (memberRepository.existsById(memberId)) {
             memberRepository.deleteById(memberId);
