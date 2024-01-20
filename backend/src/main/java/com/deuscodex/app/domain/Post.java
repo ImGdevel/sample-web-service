@@ -5,36 +5,41 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@Table(name = "member")
-public class Member {
-
+@Table(name = "post")
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;  // PK, 서비스를 이용할 유저의 ID
+    private Long id;
 
-    @NotNull
-    @Column(unique = true)
-    String username;  // 유저명
+    @ManyToOne
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
 
-    @NotNull
-    String password;  // 패스워드
+    private String title;
+    private String content;
 
-    @NotNull
-    @Column(unique = true)
-    String email;  // 이메일
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    /**
+     * 게시글 조회수를 나타내는 필드
+     */
+    private int views;
 }

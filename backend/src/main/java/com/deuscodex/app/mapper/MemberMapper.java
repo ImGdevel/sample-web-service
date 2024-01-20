@@ -10,7 +10,7 @@ public class MemberMapper {
     }
     public static MemberDTO toDTO(Member member) {
         return MemberDTO.builder()
-                .userId(member.getUserId())
+                .userId(member.getId())
                 .username(member.getUsername())
                 .password(member.getPassword())
                 .email(member.getEmail())
@@ -19,7 +19,7 @@ public class MemberMapper {
 
     public static Member toEntity(MemberDTO memberDTO) {
         return Member.builder()
-                .userId(memberDTO.getUserId())
+                .id(memberDTO.getUserId())
                 .username(memberDTO.getUsername())
                 .password(memberDTO.getPassword())
                 .email(memberDTO.getEmail())
