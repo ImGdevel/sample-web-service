@@ -1,14 +1,17 @@
+ <!-- src/App.vue -->
 <template>
-  <Home msg="Welcome to Your Vue.js App"/>
+   <div>
+    <PostList/>
+  </div>
 </template>
 
 <script>
-import Home from './components/Home.vue'
+import PostList from './components/PostList.vue'
 
 export default {
   name: 'App',
   components: {
-    Home
+    PostList
   }
 }
 </script>
