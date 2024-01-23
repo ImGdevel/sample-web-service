@@ -1,20 +1,19 @@
 <script>
-import WebHeader from './components/WebHeader.vue';
-import TheView from './components/TheView.vue';
+import WebHeader from '@/components/WebHeader.vue';
+import WebView from '@/components/WebView.vue';
 
 export default {
   name: 'App',
   components: {
-    TheView,
-    WebHeader
+    WebHeader,
+    WebView,
   },
 }
 </script>
 
 <template>
-  
   <WebHeader></WebHeader>
-  <TheView></TheView>
+  <WebView></WebView>
 </template>
 
 <style>

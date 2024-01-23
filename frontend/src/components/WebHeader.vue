@@ -1,5 +1,3 @@
-
-import router from '@/router';
 <!-- src/components/WebHeader.vue -->
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -23,6 +21,9 @@ import router from '@/router';
           </li>
           <li class="nav-item">
             <RouterLink class="nav-link" to="/about">About</RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link" to="/post">Post</RouterLink>
           </li>
         </ul>
       </div>
