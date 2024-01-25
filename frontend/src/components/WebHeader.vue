@@ -20,10 +20,10 @@
             <RouterLink class="nav-link active" aria-current="page" to="/">Home</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/about">About</RouterLink>
+            <RouterLink class="nav-link" to="/restaurant">Restaurant</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/post">Post</RouterLink>
+            <RouterLink class="nav-link" to="/menu">Menu</RouterLink>
           </li>
         </ul>
       </div>
