@@ -16,6 +16,7 @@ public class CommentMapper {
                 .post(PostMapper.toDTO(comment.getPost()))
                 .content(comment.getContent())
                 .createdAt(comment.getCreatedAt())
+                .updatedAt(comment.getUpdatedAt())
                 .build();
     }
 
@@ -25,7 +26,6 @@ public class CommentMapper {
                 .member(MemberMapper.toEntity(commentDTO.getMember()))
                 .post(PostMapper.toEntity(commentDTO.getPost()))
                 .content(commentDTO.getContent())
-                .createdAt(commentDTO.getCreatedAt())
                 .build();
     }
 }

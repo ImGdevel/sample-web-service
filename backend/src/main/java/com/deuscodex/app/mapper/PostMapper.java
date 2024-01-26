@@ -16,6 +16,7 @@ public class PostMapper {
                 .title(post.getTitle())
                 .content(post.getContent())
                 .createdAt(post.getCreatedAt())
+                .updatedAt(post.getUpdatedAt())
                 .views(post.getViews())
                 .build();
     }
@@ -26,7 +27,6 @@ public class PostMapper {
                 .member(MemberMapper.toEntity(postDTO.getMember()))
                 .title(postDTO.getTitle())
                 .content(postDTO.getContent())
-                .createdAt(postDTO.getCreatedAt())
                 .views(postDTO.getViews())
                 .build();
     }

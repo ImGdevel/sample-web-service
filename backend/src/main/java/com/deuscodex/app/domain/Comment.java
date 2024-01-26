@@ -20,7 +20,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Table(name = "comment")
-public class Comment {
+public class Comment extends TimestampedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,6 +35,4 @@ public class Comment {
 
     private String content;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
 }

@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "post")
-public class Post {
+public class Post extends TimestampedEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,12 +34,6 @@ public class Post {
 
     private String title;
     private String content;
-
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
-    /**
-     * 게시글 조회수를 나타내는 필드
-     */
+    
     private int views;
 }

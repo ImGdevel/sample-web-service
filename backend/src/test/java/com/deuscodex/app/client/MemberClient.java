@@ -11,11 +11,9 @@ public class MemberClient {
     public static void main(String[] args) {
         // Member 생성을 위한 MemberDTO 객체 생성
         MemberDTO newMember = new MemberDTO();
-        newMember.setName("John Doe");
         newMember.setUsername("john.doe");
         newMember.setPassword("password123");
         newMember.setEmail("john.doe@example.com");
-        newMember.setPhoneNumber("123-456-7890");
 
         // 서버 URL 설정
         String serverUrl = "http://localhost:8080/api/members";
