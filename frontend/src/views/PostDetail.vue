@@ -1,46 +1,80 @@
 <!-- views/PostDetail.vue -->
 <template>
-    <div>
-      <h2>{{ post.title }}</h2>
-      <p>작성자: {{ post.author }}</p>
-      <p>작성일: {{ formatTime(post.timestamp) }}</p>
-      <p>조회수: {{ post.views }}</p>
-      <p>{{ post.content }}</p>
+  <main class="post-detail-container">
+    <div class="container mt-5">
+      <h1 class="display-5">{{ post.title }}</h1>
+      <div class="post-meta text-muted mb-3 d-flex justify-content-between">
+        <div class="text-left">
+          <span class="mb-0">작성자: {{ post.member ? post.member.username : '알 수 없음' }}</span>
+        </div>
+        <div class="text-right">
+          <span class="mb-0">작성일: {{ formatTime(post.createdAt) }}</span>
+          <span class="mb-0" style="margin-left: 40px;">조회수: {{ post.views }}</span>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="post-content">
+        {{ post.content }}
+      </div>
+      <router-link to="/post" class="btn btn-primary mt-3">목록으로</router-link>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'PostDetail',
-    data() {
-      return {
-        post: {}, // 상세 페이지에 표시될 게시글 데이터
-      };
-    },
-    methods: {
-      formatTime(timestamp) {
-        const date = new Date(timestamp);
-        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+  </main>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  name: 'PostDetail',
+  data() {
+    return {
+      post: {
+        id: 1,
+        title: '',
+        member: {},
+        timestamp: 0,
+        views: 0,
+        content: '',
       },
+    };
+  },
+  mounted() {
+    // URL에서 postId를 받아오거나, 라우터를 통해 전달된 값을 사용할 수 있습니다.
+    const postId = this.$route.params.id;
+    
+    this.fetchPostDetail(postId);
+  },
+  methods: {
+    fetchPostDetail(postId) {
+      axios.get(process.env.VUE_APP_API + `/api/posts/${postId}`)
+        .then(response => {
+          this.post = response.data;
+          console.log(this.post);
+        })
+        .catch(error => {
+          console.error('API 호출 중 에러:', error);
+        });
     },
-    created() {
-      // 게시글 데이터를 API 또는 저장소에서 가져오는 로직을 추가하세요.
-      // 예를 들어, 게시글 ID를 라우터 파라미터로 받아서 해당 게시글 정보를 가져오는 방식 등.
-      const postId = this.$route.params.id;
-      // 예시로 하드코딩한 데이터
-      this.post = {
-        id: postId,
-        title: `게시글 ${postId} 제목`,
-        author: '작성자',
-        timestamp: Date.now(),
-        views: 100,
-        content: `게시글 ${postId} 내용입니다.`,
-      };
+    formatTime(timestamp) {
+      if(timestamp === undefined) return ""; 
+      const date = new Date(timestamp);
+      return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
     },
-  };
-  </script>
-  
-  <style scoped>
-  /* 필요한 스타일을 추가하세요 */
-  </style>
-  
+  },
+};
+</script>
+
+<style scoped>
+.post-detail-container {
+  min-height: 100vh;
+}
+
+.post-content {
+  font-size: 1.2rem;
+  min-height: 300px;
+}
+
+.btn-primary {
+  margin-top: 20px;
+}
+</style>
