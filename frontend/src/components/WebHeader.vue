@@ -1,6 +1,6 @@
 <!-- src/components/WebHeader.vue -->
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button
@@ -18,6 +18,9 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <RouterLink class="nav-link active" aria-current="page" to="/">Home</RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link" to="/post">Post</RouterLink>
           </li>
           <li class="nav-item">
             <RouterLink class="nav-link" to="/restaurant">Restaurant</RouterLink>
