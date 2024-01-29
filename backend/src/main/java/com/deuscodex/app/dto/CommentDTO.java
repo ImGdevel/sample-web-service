@@ -18,6 +18,4 @@ public class CommentDTO {
     private MemberDTO member;
     private PostDTO post;
     private String content;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 }

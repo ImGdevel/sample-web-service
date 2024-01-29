@@ -15,8 +15,6 @@ public class CommentMapper {
                 .member(MemberMapper.toDTO(comment.getMember()))
                 .post(PostMapper.toDTO(comment.getPost()))
                 .content(comment.getContent())
-                .createdAt(comment.getCreatedAt())
-                .updatedAt(comment.getUpdatedAt())
                 .build();
     }
 

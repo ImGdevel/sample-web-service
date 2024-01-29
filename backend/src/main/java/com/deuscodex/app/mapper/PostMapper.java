@@ -15,8 +15,6 @@ public class PostMapper {
                 .member(MemberMapper.toDTO(post.getMember()))
                 .title(post.getTitle())
                 .content(post.getContent())
-                .createdAt(post.getCreatedAt())
-                .updatedAt(post.getUpdatedAt())
                 .views(post.getViews())
                 .build();
     }
