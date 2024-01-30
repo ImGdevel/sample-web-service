@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '@/views/HomeView'
 import AboutView from '@/views/AboutView'
 import PostView from '@/views/PostView'
@@ -6,7 +6,8 @@ import PostDetail from '@/views/PostDetail';
 import CreatePost from '@/views/CreatePost.vue';
 import RestaurantView from '@/views/RestaurantView'
 import MenuVuew from '@/views/MenuView'
-
+import SignUp from '@/views/SignUp';
+import SignIn from '@/views/SignIn';
 
 const routes = [
     {
@@ -25,6 +26,7 @@ const routes = [
         path: '/restaurant',
         component: RestaurantView
     },
+
     {
         path: '/post',
         name: 'PostView',
@@ -36,6 +38,16 @@ const routes = [
         component: PostDetail,
     },
     {
+        path: '/sign_up',
+        name: 'SignUp',
+        component: SignUp
+    },
+    {
+        path: '/sign-in',
+        name: 'SignIn',
+        component: SignIn
+    },
+    {
         path: '/create-post',
         name: 'CreatePost',
         component: CreatePost,
@@ -44,7 +56,7 @@ const routes = [
         path: '/menu',
         component: MenuVuew
     },
-    
+
 ];
 
 

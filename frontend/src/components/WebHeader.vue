@@ -23,10 +23,7 @@
             <RouterLink class="nav-link" to="/post">Post</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/restaurant">Restaurant</RouterLink>
-          </li>
-          <li class="nav-item">
-            <RouterLink class="nav-link" to="/menu">Menu</RouterLink>
+            <RouterLink class="nav-link" to="/sign-in">Sign In</RouterLink>
           </li>
         </ul>
       </div>
