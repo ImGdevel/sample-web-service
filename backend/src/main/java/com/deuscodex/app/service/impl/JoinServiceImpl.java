@@ -27,10 +27,11 @@ public class JoinServiceImpl implements JoinService {
     public MemberDTO createAccount(JoinDTO joinDTO){
 
 
-        //boolean isExist = memberRepository.existsByUserName(joinDTO.getUsername());
-        //if(isExist){
-        //    return null;
-        //}
+        boolean isExist = memberRepository.existsByUsername(joinDTO.getUsername());
+        if(isExist){
+
+            return null;
+        }
 
 
         Member member = Member.builder()
