@@ -25,4 +25,5 @@ public class MemberMapper {
                 .email(memberDTO.getEmail())
                 .build();
     }
+
 }
