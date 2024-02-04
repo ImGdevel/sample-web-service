@@ -24,15 +24,14 @@ public class SecurityConfig{
                 .requestMatchers("/admin").hasRole("ADMIN")
                 .requestMatchers("/api/**").hasAnyRole("ADMIN", "USER")
                 .anyRequest().permitAll()
-        );
-
-        http.formLogin((auth)->auth
+            )
+            .formLogin((form)->form
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
                 .permitAll()
-        );
-
-        http.csrf(auth -> auth.disable());
+            )
+            .csrf(auth -> auth.disable()
+            );
 
         return http.build();
     }

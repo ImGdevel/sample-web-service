@@ -37,4 +37,6 @@ public class Member {
     @NotNull
     @Column(unique = true)
     String email;  // 이메일
+
+    String role;
 }

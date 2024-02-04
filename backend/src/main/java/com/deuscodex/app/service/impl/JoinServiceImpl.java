@@ -34,11 +34,13 @@ public class JoinServiceImpl implements JoinService {
         }
 
 
-        Member member = Member.builder()
-                            .username(joinDTO.getUsername())
-                            .password(bCryptPasswordEncoder.encode(joinDTO.getPassword()))
-                            .email(joinDTO.getEmail())
-                            .build();
+        Member member =
+                Member.builder()
+                .username(joinDTO.getUsername())
+                .password(bCryptPasswordEncoder.encode(joinDTO.getPassword()))
+                .email(joinDTO.getEmail())
+                .role("ADMIN")
+                        .build();
 
         Member savedMember = memberRepository.save(member);
         return MemberMapper.toDTO(savedMember);
