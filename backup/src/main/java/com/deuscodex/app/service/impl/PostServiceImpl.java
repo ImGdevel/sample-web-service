@@ -1,8 +1,7 @@
 package com.deuscodex.app.service.impl;
 
-
+import com.deuscodex.app.domain.Post;
 import com.deuscodex.app.dto.PostDTO;
-import com.deuscodex.app.entity.Post;
 import com.deuscodex.app.mapper.PostMapper;
 import com.deuscodex.app.repository.PostRepository;
 import com.deuscodex.app.service.PostService;

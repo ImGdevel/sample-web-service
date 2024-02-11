@@ -1,8 +1,7 @@
 package com.deuscodex.app.mapper;
 
-
+import com.deuscodex.app.domain.Post;
 import com.deuscodex.app.dto.PostDTO;
-import com.deuscodex.app.entity.Post;
 
 public class PostMapper {
 
@@ -13,18 +12,20 @@ public class PostMapper {
     public static PostDTO toDTO(Post post) {
         return PostDTO.builder()
                 .id(post.getId())
-                .user(post.getUser())
+                .member(MemberMapper.toDTO(post.getMember()))
                 .title(post.getTitle())
                 .content(post.getContent())
+                .views(post.getViews())
                 .build();
     }
 
     public static Post toEntity(PostDTO postDTO) {
         return Post.builder()
                 .id(postDTO.getId())
-                .user(postDTO.getUser())
+                .member(MemberMapper.toEntity(postDTO.getMember()))
                 .title(postDTO.getTitle())
                 .content(postDTO.getContent())
+                .views(postDTO.getViews())
                 .build();
     }
 }
