@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.time.Duration;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -57,12 +59,11 @@ public class SecurityConfig {
                                 .userService(customOAuth2UserService)
                         )
                 )
-                .formLogin(login->login.disable())
-//                .formLogin((form) -> form
-//                        .loginPage("/login")
-//                        .loginProcessingUrl("/login")
-//                        .permitAll()
-//                )
+                .formLogin((form) -> form
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .permitAll()
+                )
                 .logout((auth) -> auth.logoutUrl("/logout")
                         .logoutSuccessUrl("/")
                 );

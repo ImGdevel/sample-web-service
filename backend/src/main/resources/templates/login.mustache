@@ -53,6 +53,45 @@
             background-color: #45a049;
         }
 
+        .social-login-buttons {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .social-button {
+          display: inline-block;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          text-align: center;
+          margin: 0 5px;
+          transition: all 0.2s ease-in-out;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-button:hover {
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          transform: scale(1.1);
+        }
+
+        .naver {
+          background-color: #00C73C;
+        }
+
+        .google {
+          background-color: #4285F4;
+        }
+
+        .facebook {
+          background-color: #3B5998;
+        }
+
+        .fab {
+          font-size: 20px;
+          color: #fff;
+        }
+
     </style>
 </head>
 <body>
@@ -63,8 +102,18 @@
         <input id="password" type="password" name="password" placeholder="Password">
         <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
         <input type="submit" value="Login">
-        <!-- 구글 소셜 로그인 버튼 -->
-        <a href="/oauth2/authorization/naver">naver login</a><br>
+        <!-- 소셜 로그인 버튼 -->
+        <div class="social-login-buttons">
+          <a href="/oauth2/authorization/naver" class="social-button naver">
+            <i class="fab fa-naver"></i>
+          </a>
+          <a href="/oauth2/authorization/google" class="social-button google">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="/oauth2/authorization/facebook" class="social-button facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </div>
 
     </form>
 </body>
