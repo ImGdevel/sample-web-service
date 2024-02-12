@@ -52,6 +52,7 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+
     </style>
 </head>
 <body>
@@ -62,6 +63,9 @@
         <input id="password" type="password" name="password" placeholder="Password">
         <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
         <input type="submit" value="Login">
+        <!-- 구글 소셜 로그인 버튼 -->
+        <a href="/oauth2/authorization/naver">naver login</a><br>
+
     </form>
 </body>
 </html>
