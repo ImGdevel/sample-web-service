@@ -19,6 +19,8 @@ public class logoutController {
             new SecurityContextLogoutHandler().logout(request, response, authentication);
         }
 
+        SecurityContextHolder.clearContext();
+
         return "redirect:/";
     }
 }

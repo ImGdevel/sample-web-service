@@ -1,5 +1,6 @@
+<!--resources/templates/join.html-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,15 +53,18 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+
+
+
     </style>
 </head>
 <body>
-    <form action="/join" method="post" name="joinForm">
+    <form th:action="@{/join}" method="post" name="joinForm">
         <h2>Join</h2>
         <hr>
         <input id="username" type="text" name="username" placeholder="ID"/>
         <input id="password" type="password" name="password" placeholder="Password"/>
-		<input type="submit" value="Join"/>
+        <input type="submit" value="Join"/>
     </form>
 </body>
 </html>

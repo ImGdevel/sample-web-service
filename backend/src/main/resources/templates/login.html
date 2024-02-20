@@ -1,5 +1,6 @@
+<!--resources/templates/login.html-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,26 +96,25 @@
     </style>
 </head>
 <body>
-    <form action="/login" method="post" name="loginForm">
+    <form th:action="@{/login}" method="post" name="loginForm">
         <h2>Login</h2>
         <hr>
         <input id="username" type="text" name="username" placeholder="ID">
         <input id="password" type="password" name="password" placeholder="Password">
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
         <input type="submit" value="Login">
         <!-- 소셜 로그인 버튼 -->
         <div class="social-login-buttons">
-          <a href="/oauth2/authorization/naver" class="social-button naver">
+          <a th:href="@{/oauth2/authorization/naver}" class="social-button naver">
             <i class="fab fa-naver"></i>
           </a>
-          <a href="/oauth2/authorization/google" class="social-button google">
+          <a th:href="@{/oauth2/authorization/google}" class="social-button google">
             <i class="fab fa-google"></i>
           </a>
-          <a href="/oauth2/authorization/facebook" class="social-button facebook">
+          <a th:href="@{/oauth2/authorization/facebook}" class="social-button facebook">
             <i class="fab fa-facebook-f"></i>
           </a>
         </div>
-
     </form>
 </body>
 </html>
